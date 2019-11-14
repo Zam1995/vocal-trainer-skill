@@ -1,4 +1,10 @@
-from mycroft import MycroftSkill, intent_file_handler
+from adapt.intent import IntentBuilder
+from mycroft.skills.core import MycroftSkill, intent_handler, intent_file_handler
+from mycroft.util.log import LOG
+from mycroft.util.parse import extract_number, normalize
+
+import random
+import re
 
 
 class VocalTrainer(MycroftSkill):
@@ -7,7 +13,8 @@ class VocalTrainer(MycroftSkill):
 
     @intent_file_handler('trainer.vocal.intent')
     def handle_trainer_vocal(self, message):
-        self.speak_dialog('trainer.vocal')
+        range = random.randint(1, 200)
+        self.speak_dialog('trainer.vocal', data={"result" : range})
         
     @intent_file_handler('male.vocal.intent')
     def handle_male_vocal(self, message):
