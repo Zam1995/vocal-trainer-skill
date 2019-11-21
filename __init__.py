@@ -13,12 +13,16 @@ class VocalTrainer(MycroftSkill):
 
     @intent_file_handler('trainer.vocal.intent')
     def handle_trainer_vocal(self, message):
-        range = random.randint(1, 200)
-        self.speak_dialog('trainer.vocal', data={"result" : range})
+        self.speak_dialog('trainer.vocal')
         
     @intent_file_handler('male.vocal.intent')
     def handle_male_vocal(self, message):
         self.speak_dialog('male.vocal')
+        
+    @intent_file_handler('trainer.vocal.pitch')
+    def handle_trainer_vocal(self, message):
+        range = random.randint(1, 200)
+        self.speak_dialog('trainer.pitch', data={"result" : range})
 
 
 def create_skill():
